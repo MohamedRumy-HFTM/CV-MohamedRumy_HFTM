@@ -17,6 +17,8 @@
 <main>
     <section>
         <h2>Über mich</h2>
+        <p>Ich bin System Engineer Microsoft beim Bundesamt für Informatik und Telekommunikation und bringe Erfahrung aus dem Service Desk und der technischen Kundenberatung mit. Neben meiner Arbeit bilde ich mich an der HFTM zum diplomierten Informatiker HF mit Schwerpunkt Softwareentwicklung weiter.</p>
+        <p>In meiner aktuellen Rolle arbeite ich an der Automatisierung und Weiterentwicklung von Microsoft-Plattformen. In meiner Freizeit treibe ich gerne Sport und verbringe Zeit mit Familie und Freunden.</p>
     </section>
 
     <section>
@@ -70,16 +72,77 @@
 
     <section>
         <h2>Schulischer Werdegang</h2>
+
+        <div>
+            <p><strong>2024 - Zurzeit (Abschluss 2027)</strong></p>
+            <h3>dipl. Informatiker HF - Schwerpunkt Softwareentwicklung</h3>
+            <p>Höhere Fachschule für Technik Mittelland HFTM</p>
+            <img src="Bilder/HFTM_logo.jpg" alt="HFTM Logo">
+        </div>
+
+        <div>
+            <p><strong>2015 - 2018</strong></p>
+            <h3>Kaufmännische Grundbildung EFZ</h3>
+            <p>Kaufmännische Berufsfachschule Solothurn KBS</p>
+            <img src="Bilder/KBS_logo.jpeg" alt="KBS Logo">
+        </div>
     </section>
 
     <section>
-        <h2>Skills</h2>
+        <h2>Kenntnisse und Interessen</h2>
+
+        <div>
+            <h3>Sprachkenntnisse</h3>
+            <ul>
+                <li>Englisch - Muttersprache (C2)</li>
+                <li>Deutsch + Schweizerdeutsch - Fliessend (C2)</li>
+                <li>Französisch - Konversationssicher (B2)</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Programmiersprachen</h3>
+            <ul>
+                <li>Java</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>SQL</li>
+                <li>PostgreSQL</li>
+                <li>PowerShell</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Interessen</h3>
+            <p>Lesen, Kochen, Fitness, Tennis, Muay Thai und Zeit mit Freunden und Familie verbringen</p>
+        </div>
     </section>
 
     <section>
         <h2>Kontaktformular</h2>
-        <form>
+        <form method="POST" action="/send-message">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
 
+            <div>
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div>
+                <label for="subject">Betreff:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+
+            <div>
+                <label for="message">Nachricht:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+
+            <button type="submit">Nachricht senden</button>
         </form>
     </section>
 </main>
