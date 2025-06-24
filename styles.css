@@ -51,8 +51,16 @@ img {
 
 section {
     margin-bottom: 30px;
-    padding: 20px;
+    padding: 30px;
     background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 ul {
