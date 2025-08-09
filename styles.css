@@ -244,3 +244,32 @@ section div h3 {
         padding-right: 20px;
     }
 }
+
+/* ---------------------------
+   Zusätze für Accessibility + Performance
+   --------------------------- */
+
+/* 1) Kontrastoptimierung (WCAG AA) */
+body { color: #222; }                 /* etwas dunkler für besseren Textkontrast */
+header { background-color: #1a2b3c; } /* dunkleres Blau = mehr Kontrast zu Weiß */
+button { background-color: #1a2b3c; }
+button:hover { background-color: #102030; }
+
+/* 2) Fokus klar sichtbar (Tastatur-Navigation) */
+input:focus,
+textarea:focus,
+button:focus,
+a:focus {
+    outline: 3px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* 3) Kontrastreichere Links */
+a { color: #0066cc; }
+a:hover, a:focus { color: #004a99; }
+
+/* 4) Kleine Performance-Hilfe für lazy Images */
+img[loading="lazy"] { filter: blur(0.0001px); }
+
+/* 5) Empfohlene Mindesthöhe für Click Targets */
+button, input, textarea { min-height: 44px; }
