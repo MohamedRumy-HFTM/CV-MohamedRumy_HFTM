@@ -1,9 +1,11 @@
+// Formular Validierung
 function validateForm() {
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
     var subject = document.getElementById("subject").value;
     var message = document.getElementById("message").value;
 
+    // Fehlermeldungen sammeln
     var errors = [];
 
     if (name == "") {
@@ -26,15 +28,22 @@ function validateForm() {
         errors.push("längere Nachricht (min. 10 Zeichen)");
     }
 
+    // Fehler anzeigen
     if (errors.length > 0) {
         alert("Bitte folgende Felder ausfüllen: " + errors.join(", "));
         return false;
     }
 
+    // Erfolgsmeldung
     showSuccessMessage();
-    return false;
+
+    // E-Mail senden
+    sendEmail();
+
+    return false; // Verhindert normales Senden
 }
 
+// Erfolgsmeldung anzeigen
 function showSuccessMessage() {
     var form = document.querySelector("form");
     var successDiv = document.createElement("div");
@@ -47,15 +56,21 @@ function showSuccessMessage() {
 
     form.appendChild(successDiv);
 
+    // Nach 5 Sekunden ausblenden
     setTimeout(function() {
         successDiv.remove();
         form.reset();
     }, 5000);
 }
 
+// EmailJS Integration vorbereiten
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Formular-Validierung geladen");
 
+    // EmailJS initialisieren (Public Key)
+    emailjs.init("NptaAAi7rHTV3_kLK");
+
+    // Button Text ändern beim Hover
     var button = document.querySelector("button[type='submit']");
     button.addEventListener("mouseover", function() {
         this.style.backgroundColor = "#34495e";
@@ -65,3 +80,34 @@ document.addEventListener("DOMContentLoaded", function() {
         this.style.backgroundColor = "#2c3e50";
     });
 });
+
+// E-Mail senden mit EmailJS
+function sendEmail() {
+    var button = document.querySelector("button[type='submit']");
+    var originalText = button.textContent;
+
+    // Button Status ändern
+    button.textContent = "Wird gesendet...";
+    button.disabled = true;
+
+    // Template Parameter
+    var templateParams = {
+        from_name: document.getElementById("name").value,
+        from_email: document.getElementById("email").value,
+        message: document.getElementById("subject").value + "\n\n" + document.getElementById("message").value
+    };
+
+    // E-Mail senden
+    emailjs.send('service_2ro0mw5', 'template_do7y9wr', templateParams)
+        .then(function(response) {
+            console.log('Erfolgreich!', response.status, response.text);
+            showSuccessMessage();
+            button.textContent = originalText;
+            button.disabled = false;
+        }, function(error) {
+            console.log('Fehler...', error);
+            alert("Entschuldigung, es gab einen Fehler beim Senden. Bitte versuchen Sie es später erneut.");
+            button.textContent = originalText;
+            button.disabled = false;
+        });
+}
