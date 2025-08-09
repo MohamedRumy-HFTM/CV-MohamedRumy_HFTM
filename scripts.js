@@ -34,13 +34,8 @@ function validateForm() {
         return false;
     }
 
-    // Erfolgsmeldung
-    showSuccessMessage();
-
-    // E-Mail senden
-    sendEmail();
-
-    return false; // Verhindert normales Senden
+    // Keine Erfolgsmeldung und kein Abbruch hier – Validierung ok
+    return true;
 }
 
 // Erfolgsmeldung anzeigen
@@ -69,6 +64,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // EmailJS initialisieren (Public Key)
     emailjs.init("NptaAAi7rHTV3_kLK");
+
+    // Validierung + paralleler Email-Versand beim Absenden
+    var form = document.querySelector("form");
+    form.addEventListener("submit", function(e) {
+        var ok = validateForm();
+        if (!ok) {
+            e.preventDefault(); // Formspree-POST blockieren, wenn invalid
+            return;
+        }
+        // Valid -> EmailJS zusätzlich senden; Formspree-POST läuft nativ weiter
+        sendEmail();
+        // kein preventDefault -> native Navigation/Thank-You durch Formspree
+    });
 
     // Button Text ändern beim Hover
     var button = document.querySelector("button[type='submit']");
@@ -101,11 +109,12 @@ function sendEmail() {
     emailjs.send('service_2ro0mw5', 'template_do7y9wr', templateParams)
         .then(function(response) {
             console.log('Erfolgreich!', response.status, response.text);
-            showSuccessMessage();
+            showSuccessMessage(); // nur bei Erfolg
             button.textContent = originalText;
             button.disabled = false;
         }, function(error) {
             console.log('Fehler...', error);
+            // keine Vorab-Erfolgsmeldung; nur Hinweis
             alert("Entschuldigung, es gab einen Fehler beim Senden. Bitte versuchen Sie es später erneut.");
             button.textContent = originalText;
             button.disabled = false;

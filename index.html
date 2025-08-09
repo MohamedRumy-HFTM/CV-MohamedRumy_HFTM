@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Mohamed Rumy</title>
+    <meta name="description" content="Lebenslauf von Mohamed Rumy – System Engineer Microsoft beim Bundesamt für Informatik und Telekommunikation (BIT). Berufserfahrung, Ausbildung, Skills & Kontakt.">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="scripts.js" defer></script>
 </head>
 <body>
 <header>
-    <img src="Bilder/Portrait.JPG" alt="Mohamed Rumy">
+    <img src="Bilder/Portrait.JPG" alt="Mohamed Rumy" width="180" height="180">
     <h1>Mohamed Rumy</h1>
     <p>System Engineer Microsoft beim Bundesamt für Informatik und Telekommunikation BIT</p>
 </header>
@@ -29,7 +30,7 @@
             <p><strong>Jan 2025 - Heute</strong></p>
             <h3>System Engineer Microsoft</h3>
             <p>Bundesamt für Informatik und Telekommunikation BIT</p>
-            <img src="Bilder/schweizerische-eidgenossenschaft-schweizerkreuz.jpg" alt="BIT Logo">
+            <img src="Bilder/schweizerische-eidgenossenschaft-schweizerkreuz.jpg" alt="BIT Logo" loading="lazy" decoding="async">
             <p>• In Projekten im Bereich Engineering, Betrieb und Weiterentwickeln der Microsoft Plattformen (Account Orchestrierung/Workflow Automatisierung)<br>
                 • Scripts, Systemanpassungen und Systemintegration auf den verschiedenen Microsoft Umgebungen erstellen und verwalten<br>
                 • Automatisierungsbestrebungen mit entsprechenden Automatisierungstools vorwärtstreiben<br>
@@ -40,7 +41,7 @@
             <p><strong>Nov 2023 - Dez 2024</strong></p>
             <h3>ICT Service Desk Supporter</h3>
             <p>Bundesamt für Informatik und Telekommunikation BIT</p>
-            <img src="Bilder/schweizerische-eidgenossenschaft-schweizerkreuz.jpg" alt="BIT Logo">
+            <img src="Bilder/schweizerische-eidgenossenschaft-schweizerkreuz.jpg" alt="BIT Logo" loading="lazy" decoding="async">
             <p>• Störungsmeldungen, Fragen und Änderungswünsche der Kunden entgegennehmen<br>
                 • Notwendige Informationen im Ticketsystem Remedy erfassen und klassifizieren<br>
                 • Störungen am Telefon und per Remote Support beheben, sowie Anwenderunterstützung im Microsoft-Umfeld leisten<br>
@@ -52,7 +53,7 @@
             <p><strong>Sep 2022 - Okt 2023</strong></p>
             <h3>Technical Customer Consultant</h3>
             <p>Swisscom Schweiz AG</p>
-            <img src="Bilder/SCMN.SW-38a30a24.png" alt="Swisscom Logo">
+            <img src="Bilder/SCMN.SW-38a30a24.png" alt="Swisscom Logo" loading="lazy" decoding="async">
             <p>• Beratung und Analysierung über Telefon und elektronische Supportmedien<br>
                 • Bearbeitung und Beantwortung schriftlicher Kundenanliegen und Tickets<br>
                 • Erstellung und Weiterleitung von Tickets<br>
@@ -67,7 +68,7 @@
             <p><strong>2015 - 2018</strong></p>
             <h3>Kaufmännische Grundausbildung EFZ</h3>
             <p>Lanz Oensingen AG</p>
-            <img src="Bilder/Logo_Lanz.jpg" alt="Lanz Oensingen AG Logo">
+            <img src="Bilder/Logo_Lanz.jpg" alt="Lanz Oensingen AG Logo" loading="lazy" decoding="async">
         </div>
     </section>
 
@@ -78,14 +79,14 @@
             <p><strong>2024 - Zurzeit (Abschluss 2027)</strong></p>
             <h3>dipl. Informatiker HF - Schwerpunkt Softwareentwicklung</h3>
             <p>Höhere Fachschule für Technik Mittelland HFTM</p>
-            <img src="Bilder/HFTM_logo.jpg" alt="HFTM Logo">
+            <img src="Bilder/HFTM_logo.jpg" alt="HFTM Logo" loading="lazy" decoding="async">
         </div>
 
         <div>
             <p><strong>2015 - 2018</strong></p>
             <h3>Kaufmännische Grundbildung EFZ</h3>
             <p>Kaufmännische Berufsfachschule Solothurn KBS</p>
-            <img src="Bilder/KBS_logo.jpeg" alt="KBS Logo">
+            <img src="Bilder/KBS_logo.jpeg" alt="KBS Logo" loading="lazy" decoding="async">
         </div>
     </section>
 
@@ -122,25 +123,25 @@
 
     <section>
         <h2>Kontaktformular</h2>
-        <form onsubmit="return validateForm()">
+        <form method="POST" action="https://formspree.io/f/mjkojvwl" accept-charset="UTF-8">
             <div>
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input autocomplete="name" type="text" id="name" name="name" required>
             </div>
 
             <div>
                 <label for="email">E-Mail:</label>
-                <input type="email" id="email" name="email" required>
+                <input autocomplete="email" type="email" id="email" name="email" required>
             </div>
 
             <div>
                 <label for="subject">Betreff:</label>
-                <input type="text" id="subject" name="subject" required>
+                <input autocomplete="off" type="text" id="subject" name="subject" required>
             </div>
 
             <div>
                 <label for="message">Nachricht:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+                <textarea autocomplete="off" id="message" name="message" rows="5" required></textarea>
             </div>
 
             <button type="submit">Nachricht senden</button>

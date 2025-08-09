@@ -65,6 +65,7 @@ p {
 
 img {
     max-width: 100%;
+    height: auto;
 }
 
 section {
@@ -115,6 +116,7 @@ section img {
     width: 100px;
     height: auto;
     margin-top: 10px;
+    max-width: 80px;
 }
 
 form div {
@@ -174,6 +176,7 @@ section div img {
     width: 80px;
     height: 80px;
     object-fit: contain;
+    max-width: 80px;
 }
 
 img[alt="BIT Logo"] {
@@ -234,6 +237,7 @@ section div h3 {
         height: 60px;
         position: static;
         margin-top: 10px;
+        max-width: 60px;
     }
 
     section div {
