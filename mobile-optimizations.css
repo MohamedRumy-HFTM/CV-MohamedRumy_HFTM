@@ -192,7 +192,6 @@
     
     button {
         padding: 0.75rem 1rem !important;
-        font-size: 1rem !important;
     }
     
     /* Optimize skill bars for small screens */
@@ -283,53 +282,13 @@
     }
 }
 
-/* Performance optimizations for slow devices */
+/* Light performance optimizations - NO AGGRESSIVE RULES */
 @media (max-width: 768px) {
-    /* Reduce paint complexity */
-    .job-entry,
-    .education-entry,
-    .skill-category {
-        will-change: auto !important;
-        transform: none !important;
-    }
-    
-    /* Optimize rendering */
-    .skill-bar {
-        will-change: width !important;
-    }
-    
-    /* Reduce layer creation */
-    .company-logo {
-        transform: translateZ(0) !important;
-    }
-    
-    /* Additional performance optimizations for Lighthouse Score 90+ */
-    * {
-        backface-visibility: hidden !important;
-        -webkit-backface-visibility: hidden !important;
-    }
+    /* Only essential optimizations that don't hurt performance */
     
     /* Optimize images for better performance */
     img {
-        image-rendering: -webkit-optimize-contrast !important;
-        image-rendering: crisp-edges !important;
-    }
-    
-    /* Reduce repaints */
-    .job-entry,
-    .education-entry,
-    .skill-category,
-    .interest-item {
-        contain: layout style paint !important;
-    }
-    
-    /* Optimize animations */
-    .skill-bar-container {
-        contain: layout style paint !important;
-    }
-    
-    /* Reduce memory usage */
-    .company-logo {
-        contain: layout style paint !important;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
     }
 }
