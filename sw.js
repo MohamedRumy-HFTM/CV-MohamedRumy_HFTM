@@ -47,7 +47,7 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Fetch event - mobile-optimized caching strategy
+// Fetch event - performance-optimized caching strategy
 self.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
@@ -55,20 +55,17 @@ self.addEventListener('fetch', (event) => {
     // Skip non-GET requests
     if (request.method !== 'GET') return;
     
-    // Mobile-specific optimizations
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    // Handle different resource types with appropriate strategies
+    // Performance optimization: simpler strategy
     if (request.destination === 'image') {
-        event.respondWith(handleImageRequest(request, isMobile));
+        event.respondWith(handleImageRequest(request));
     } else if (request.destination === 'script' || request.destination === 'style') {
-        event.respondWith(handleStaticRequest(request, isMobile));
+        event.respondWith(handleStaticRequest(request));
     } else {
-        event.respondWith(handlePageRequest(request, isMobile));
+        event.respondWith(handlePageRequest(request));
     }
 });
 
-async function handleImageRequest(request, isMobile) {
+async function handleImageRequest(request) {
     const cache = await caches.open(IMAGE_CACHE);
     const cachedResponse = await cache.match(request);
     
@@ -80,13 +77,8 @@ async function handleImageRequest(request, isMobile) {
     try {
         const networkResponse = await fetch(request);
         if (networkResponse.ok) {
-            // Mobile optimization: cache smaller images
-            if (isMobile) {
-                // For mobile, prioritize caching and reduce image size if possible
-                cache.put(request, networkResponse.clone());
-            } else {
-                cache.put(request, networkResponse.clone());
-            }
+            // Simple caching strategy
+            cache.put(request, networkResponse.clone());
         }
         return networkResponse;
     } catch {
@@ -95,7 +87,7 @@ async function handleImageRequest(request, isMobile) {
     }
 }
 
-async function handleStaticRequest(request, isMobile) {
+async function handleStaticRequest(request) {
     const cache = await caches.open(STATIC_CACHE);
     const cachedResponse = await cache.match(request);
     
@@ -106,7 +98,7 @@ async function handleStaticRequest(request, isMobile) {
     try {
         const networkResponse = await fetch(request);
         if (networkResponse.ok) {
-            // Mobile optimization: always cache static resources
+            // Simple caching strategy
             cache.put(request, networkResponse.clone());
         }
         return networkResponse;
@@ -115,14 +107,14 @@ async function handleStaticRequest(request, isMobile) {
     }
 }
 
-async function handlePageRequest(request, isMobile) {
+async function handlePageRequest(request) {
     const cache = await caches.open(STATIC_CACHE);
     const cachedResponse = await cache.match(request);
     
     try {
         const networkResponse = await fetch(request);
         if (networkResponse.ok) {
-            // Mobile optimization: prioritize caching for better offline experience
+            // Simple caching strategy
             cache.put(request, networkResponse.clone());
         }
         return networkResponse;

@@ -23,14 +23,14 @@ class ContactForm {
     }
 
     addEventListeners() {
-        // Form submission
+        // Form submission - only essential listener
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
 
-        // Input focus effects
-        this.addInputFocusEffects();
-
-        // Submit button hover effects
-        this.addButtonEffects();
+        // Input focus effects - only on desktop
+        if (window.innerWidth > 768) {
+            this.addInputFocusEffects();
+            this.addButtonEffects();
+        }
     }
 
     addInputFocusEffects() {
