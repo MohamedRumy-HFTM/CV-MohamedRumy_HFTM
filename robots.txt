@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mohamedrumy.ch/sitemap.xml
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important pages
+Allow: /index.html
+Allow: /styles.css
+Allow: /scripts.js
+Allow: /Bilder/
