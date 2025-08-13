@@ -1,0 +1,335 @@
+/* Mobile-specific optimizations for better Lighthouse performance */
+
+/* Reduce paint complexity on mobile */
+@media (max-width: 768px) {
+    /* Disable complex gradients and shadows */
+    header::before {
+        opacity: 0.2;
+        background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.03) 0%, transparent 50%);
+    }
+    
+    /* Simplify section backgrounds */
+    section::before {
+        opacity: 0.1;
+    }
+    
+    /* Reduce box-shadow complexity */
+    .job-entry,
+    .education-entry,
+    .skill-category,
+    .interest-item {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+    
+    /* Optimize transitions for mobile */
+    * {
+        transition-duration: 0.15s !important;
+        transition-timing-function: ease-out !important;
+    }
+    
+    /* Disable hover effects on mobile */
+    .job-entry:hover,
+    .education-entry:hover,
+    .skill-category:hover,
+    .interest-item:hover,
+    .social-link:hover {
+        transform: none !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    }
+    
+    /* Optimize skill bar animations */
+    .skill-bar {
+        transition: width 0.3s ease-out !important;
+    }
+    
+    .skill-bar::after {
+        animation: none !important;
+    }
+    
+    /* Reduce header complexity */
+    header {
+        background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+    }
+    
+    /* Optimize form interactions */
+    input:focus,
+    textarea:focus {
+        transform: none !important;
+        box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2) !important;
+    }
+    
+    /* Fix text clipping issues */
+    .job-title,
+    .company-name,
+    .education-entry h3,
+    .education-entry .institution,
+    .skill-name {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+        max-width: 100% !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* Optimize company logos for mobile - FIX OVERLAP ISSUES */
+    .company-logo {
+        width: 50px !important;
+        height: 50px !important;
+        padding: 4px !important;
+        position: absolute !important;
+        right: 1rem !important;
+        top: 1rem !important;
+        z-index: 1 !important;
+    }
+    
+    /* Fix education entry layout to prevent logo overlap */
+    .education-entry {
+        position: relative !important;
+        padding-right: 4rem !important;
+        min-height: 80px !important;
+    }
+    
+    /* Ensure text doesn't overlap with logos */
+    .education-entry h3,
+    .education-entry .institution,
+    .education-entry .education-period {
+        max-width: calc(100% - 3rem) !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        hyphens: auto !important;
+    }
+    
+    /* Reduce padding and margins for mobile */
+    section {
+        padding: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .job-header {
+        padding: 1rem !important;
+        position: relative !important;
+        min-height: 120px !important;
+    }
+    
+    /* Fix job logo positioning to prevent overlap */
+    .job-header .company-logo {
+        width: 60px !important;
+        height: 60px !important;
+        margin: 0 auto 1rem auto !important;
+        position: relative !important;
+        top: 0 !important;
+        right: 0 !important;
+    }
+    
+    /* Ensure job info doesn't overlap with logos */
+    .job-header .job-info {
+        text-align: center !important;
+        width: 100% !important;
+        overflow: hidden !important;
+        padding: 0 0.5rem !important;
+    }
+    
+    .job-responsibilities {
+        padding: 1rem !important;
+    }
+    
+    /* Optimize skill items for mobile */
+    .skill-item {
+        padding: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Optimize interests grid for mobile */
+    .interests-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem !important;
+    }
+    
+    .interest-item {
+        padding: 0.75rem !important;
+    }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+    /* Further reduce complexity */
+    header {
+        min-height: 200px !important;
+        padding: 1.5rem 1rem !important;
+    }
+    
+    header h1 {
+        font-size: 1.5rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    header img {
+        width: 100px !important;
+        height: 100px !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    main {
+        padding: 0.75rem !important;
+    }
+    
+    section {
+        padding: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Optimize form for small screens */
+    .form-group {
+        margin-bottom: 1rem !important;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        padding: 0.75rem !important;
+        font-size: 16px !important;
+    }
+    
+    button {
+        padding: 0.75rem 1rem !important;
+        font-size: 1rem !important;
+    }
+    
+    /* Optimize skill bars for small screens */
+    .skill-bar-container {
+        height: 10px !important;
+    }
+    
+    .skill-name {
+        font-size: 0.9rem !important;
+    }
+    
+    .skill-level {
+        font-size: 0.8rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+    header {
+        min-height: 150px !important;
+        padding: 1rem !important;
+    }
+    
+    header img {
+        width: 80px !important;
+        height: 80px !important;
+        margin-bottom: 0.75rem !important;
+    }
+    
+    .job-header {
+        flex-direction: row !important;
+        text-align: left !important;
+        gap: 1rem !important;
+    }
+    
+    .company-logo {
+        margin: 0 !important;
+    }
+    
+    .job-info {
+        text-align: left !important;
+    }
+}
+
+/* High DPI display optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .company-logo {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Reduced motion support for better performance */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .skill-bar {
+        transition: none !important;
+    }
+    
+    .skill-bar::after {
+        animation: none !important;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets */
+    .social-link,
+    .interest-item,
+    button {
+        min-height: 44px !important;
+    }
+    
+    /* Disable hover effects on touch devices */
+    .job-entry:hover,
+    .education-entry:hover,
+    .skill-category:hover,
+    .interest-item:hover,
+    .social-link:hover {
+        transform: none !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+    }
+}
+
+/* Performance optimizations for slow devices */
+@media (max-width: 768px) {
+    /* Reduce paint complexity */
+    .job-entry,
+    .education-entry,
+    .skill-category {
+        will-change: auto !important;
+        transform: none !important;
+    }
+    
+    /* Optimize rendering */
+    .skill-bar {
+        will-change: width !important;
+    }
+    
+    /* Reduce layer creation */
+    .company-logo {
+        transform: translateZ(0) !important;
+    }
+    
+    /* Additional performance optimizations for Lighthouse Score 90+ */
+    * {
+        backface-visibility: hidden !important;
+        -webkit-backface-visibility: hidden !important;
+    }
+    
+    /* Optimize images for better performance */
+    img {
+        image-rendering: -webkit-optimize-contrast !important;
+        image-rendering: crisp-edges !important;
+    }
+    
+    /* Reduce repaints */
+    .job-entry,
+    .education-entry,
+    .skill-category,
+    .interest-item {
+        contain: layout style paint !important;
+    }
+    
+    /* Optimize animations */
+    .skill-bar-container {
+        contain: layout style paint !important;
+    }
+    
+    /* Reduce memory usage */
+    .company-logo {
+        contain: layout style paint !important;
+    }
+}
