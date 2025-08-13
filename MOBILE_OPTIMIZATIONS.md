@@ -90,7 +90,7 @@
 ## Erwartete Verbesserungen des Lighthouse Scores
 
 ### Vorher: 58
-### Nachher: Ziel 90+ (aktuell 87, wird auf 90+ optimiert)
+### Nachher: Ziel 90+ (aktuell 87, Performance-Reparatur durchgeführt)
 
 #### Performance-Verbesserungen:
 - **First Contentful Paint (FCP)**: -30%

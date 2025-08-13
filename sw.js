@@ -47,7 +47,7 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Fetch event - performance-optimized caching strategy
+// Fetch event - optimized caching strategy
 self.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
@@ -55,7 +55,7 @@ self.addEventListener('fetch', (event) => {
     // Skip non-GET requests
     if (request.method !== 'GET') return;
     
-    // Performance optimization: simpler strategy
+    // Handle different resource types with appropriate strategies
     if (request.destination === 'image') {
         event.respondWith(handleImageRequest(request));
     } else if (request.destination === 'script' || request.destination === 'style') {
