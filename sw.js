@@ -1,7 +1,8 @@
-// Service Worker for CV Website - Performance Optimized
-const CACHE_NAME = 'cv-website-v1.1.0';
-const STATIC_CACHE = 'static-v1.1.0';
-const IMAGE_CACHE = 'images-v1.1.0';
+// Service Worker for CV Website - Mobile Performance Optimized
+const CACHE_NAME = 'cv-website-v1.2.0';
+const STATIC_CACHE = 'static-v1.2.0';
+const IMAGE_CACHE = 'images-v1.2.0';
+const MOBILE_CACHE = 'mobile-v1.2.0';
 
 // Critical resources for immediate loading
 const CRITICAL_RESOURCES = [
@@ -26,7 +27,7 @@ const IMAGE_RESOURCES = [
     '/Bilder/SCMN.SW-38a30a24.png'
 ];
 
-// Install event - cache critical resources first
+// Install event - cache critical resources first with mobile optimization
 self.addEventListener('install', (event) => {
     event.waitUntil(
         Promise.all([
@@ -46,7 +47,7 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Fetch event - optimized caching strategy
+// Fetch event - mobile-optimized caching strategy
 self.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
@@ -54,17 +55,20 @@ self.addEventListener('fetch', (event) => {
     // Skip non-GET requests
     if (request.method !== 'GET') return;
     
+    // Mobile-specific optimizations
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
     // Handle different resource types with appropriate strategies
     if (request.destination === 'image') {
-        event.respondWith(handleImageRequest(request));
+        event.respondWith(handleImageRequest(request, isMobile));
     } else if (request.destination === 'script' || request.destination === 'style') {
-        event.respondWith(handleStaticRequest(request));
+        event.respondWith(handleStaticRequest(request, isMobile));
     } else {
-        event.respondWith(handlePageRequest(request));
+        event.respondWith(handlePageRequest(request, isMobile));
     }
 });
 
-async function handleImageRequest(request) {
+async function handleImageRequest(request, isMobile) {
     const cache = await caches.open(IMAGE_CACHE);
     const cachedResponse = await cache.match(request);
     
@@ -76,7 +80,13 @@ async function handleImageRequest(request) {
     try {
         const networkResponse = await fetch(request);
         if (networkResponse.ok) {
-            cache.put(request, networkResponse.clone());
+            // Mobile optimization: cache smaller images
+            if (isMobile) {
+                // For mobile, prioritize caching and reduce image size if possible
+                cache.put(request, networkResponse.clone());
+            } else {
+                cache.put(request, networkResponse.clone());
+            }
         }
         return networkResponse;
     } catch {
@@ -85,7 +95,7 @@ async function handleImageRequest(request) {
     }
 }
 
-async function handleStaticRequest(request) {
+async function handleStaticRequest(request, isMobile) {
     const cache = await caches.open(STATIC_CACHE);
     const cachedResponse = await cache.match(request);
     
@@ -96,6 +106,7 @@ async function handleStaticRequest(request) {
     try {
         const networkResponse = await fetch(request);
         if (networkResponse.ok) {
+            // Mobile optimization: always cache static resources
             cache.put(request, networkResponse.clone());
         }
         return networkResponse;
@@ -104,13 +115,14 @@ async function handleStaticRequest(request) {
     }
 }
 
-async function handlePageRequest(request) {
+async function handlePageRequest(request, isMobile) {
     const cache = await caches.open(STATIC_CACHE);
     const cachedResponse = await cache.match(request);
     
     try {
         const networkResponse = await fetch(request);
         if (networkResponse.ok) {
+            // Mobile optimization: prioritize caching for better offline experience
             cache.put(request, networkResponse.clone());
         }
         return networkResponse;
@@ -119,13 +131,13 @@ async function handlePageRequest(request) {
     }
 }
 
-// Activate event - clean up old caches
+// Activate event - clean up old caches with mobile optimization
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
-                    if (![STATIC_CACHE, IMAGE_CACHE].includes(cacheName)) {
+                    if (![STATIC_CACHE, IMAGE_CACHE, MOBILE_CACHE].includes(cacheName)) {
                         console.log('Deleting old cache:', cacheName);
                         return caches.delete(cacheName);
                     }

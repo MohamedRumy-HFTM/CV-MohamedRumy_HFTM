@@ -1368,7 +1368,7 @@ footer {
         height: 120px;
     }
 
-    /* Mobile job entry layout */
+    /* Mobile job entry layout - FIXED TEXT CLIPPING */
     .job-header {
         flex-direction: column;
         text-align: center;
@@ -1384,15 +1384,29 @@ footer {
 
     .job-info {
         text-align: center;
+        width: 100%;
+        overflow: hidden;
     }
 
     .job-title {
         font-size: var(--font-size-xl);
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
     }
 
     .company {
         flex-direction: column;
         gap: var(--spacing-xs);
+        width: 100%;
+    }
+
+    .company-name {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
     }
 
     .company-location {
@@ -1417,6 +1431,8 @@ footer {
         padding: var(--spacing-sm);
         font-size: var(--font-size-small);
         line-height: 1.5;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .job-responsibilities li:hover {
@@ -1455,6 +1471,30 @@ footer {
     .education-entry:hover,
     .skill-category:hover {
         transform: none;
+    }
+
+    /* Fix education entry text clipping */
+    .education-entry h3 {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
+        font-size: var(--font-size-large);
+    }
+
+    .education-entry .institution {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
+    }
+
+    /* Fix skill names text clipping */
+    .skill-name {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        max-width: 100%;
     }
 }
 
@@ -1592,30 +1632,57 @@ footer {
     }
 
     /* Mobile performance optimizations */
-    @media (max-width: 768px) {
-        /* Reduce animations on mobile for better performance */
-        .company-logo {
-            animation: none;
-        }
-
-        .skill-bar::after {
-            animation: none;
-        }
-
-        /* Optimize transitions */
-        * {
-            transition-duration: 0.2s;
-        }
-
-        /* Reduce shadows for better mobile performance */
-        .job-entry {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        section {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-        }
+@media (max-width: 768px) {
+    /* Reduce animations on mobile for better performance */
+    .company-logo {
+        animation: none;
     }
+
+    .skill-bar::after {
+        animation: none;
+    }
+
+    /* Optimize transitions */
+    * {
+        transition-duration: 0.15s;
+        transition-timing-function: ease-out;
+    }
+
+    /* Reduce shadows for better mobile performance */
+    .job-entry {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    section {
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Disable complex hover effects on mobile */
+    .job-entry:hover,
+    .education-entry:hover,
+    .skill-category:hover,
+    .interest-item:hover {
+        transform: none;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Optimize skill bar animations */
+    .skill-bar {
+        transition: width 0.3s ease-out;
+    }
+
+    /* Reduce header complexity */
+    header::before {
+        opacity: 0.3;
+    }
+
+    /* Optimize form interactions */
+    input:focus,
+    textarea:focus {
+        transform: none;
+        box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.2);
+    }
+}
 }
 
 /* Landscape mobile optimization */

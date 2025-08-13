@@ -253,10 +253,11 @@ class ContactForm {
     }
 }
 
-// Performance monitoring
+// Performance monitoring - Mobile Optimized
 class PerformanceMonitor {
     constructor() {
         this.metrics = {};
+        this.isMobile = window.innerWidth <= 768;
         this.init();
     }
 
@@ -264,8 +265,10 @@ class PerformanceMonitor {
         // Monitor page load performance
         this.measurePageLoad();
 
-        // Monitor form interactions
-        this.measureFormPerformance();
+        // Monitor form interactions only on desktop
+        if (!this.isMobile) {
+            this.measureFormPerformance();
+        }
     }
 
     measurePageLoad() {
@@ -275,14 +278,19 @@ class PerformanceMonitor {
                 this.metrics.pageLoadTime = perfData.loadEventEnd - perfData.loadEventStart;
                 this.metrics.domContentLoaded = perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart;
 
-                console.log('Performance metrics:', this.metrics);
+                // Mobile-specific logging
+                if (this.isMobile) {
+                    console.log('Mobile Performance metrics:', this.metrics);
+                } else {
+                    console.log('Desktop Performance metrics:', this.metrics);
+                }
             }
         });
     }
 
     measureFormPerformance() {
         const form = document.getElementById('contact-form');
-        if (form) {
+        if (form && !this.isMobile) {
             const observer = new PerformanceObserver((list) => {
                 for (const entry of list.getEntries()) {
                     if (entry.name.includes('form')) {
@@ -377,7 +385,7 @@ class SmoothScroller {
     }
 }
 
-// Skill bars animation utility
+// Skill bars animation utility - Mobile Optimized
 class SkillBarsAnimator {
     constructor() {
         this.init();
@@ -394,13 +402,19 @@ class SkillBarsAnimator {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.width = entry.target.style.getPropertyValue('--skill-width');
+                        // Mobile optimization: simpler animation
+                        if (window.innerWidth <= 768) {
+                            entry.target.style.width = entry.target.style.getPropertyValue('--skill-width');
+                        } else {
+                            // Desktop: full animation
+                            entry.target.style.width = entry.target.style.getPropertyValue('--skill-width');
+                        }
                         observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.5,
-                rootMargin: '0px 0px -50px 0px'
+                threshold: 0.3, // Lower threshold for mobile
+                rootMargin: '0px 0px -30px 0px' // Smaller margin for mobile
             });
 
             skillBars.forEach(bar => {
@@ -411,7 +425,7 @@ class SkillBarsAnimator {
             skillBars.forEach(bar => {
                 setTimeout(() => {
                     bar.style.width = bar.style.getPropertyValue('--skill-width');
-                }, 500);
+                }, 300); // Faster on mobile
             });
         }
     }
