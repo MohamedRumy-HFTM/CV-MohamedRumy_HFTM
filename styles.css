@@ -356,7 +356,7 @@ section:hover {
     box-shadow: 0 12px 40px var(--shadow-medium);
 }
 
-/* Enhanced header with better layout */
+/* Enhanced header with better layout - Mobile Optimized */
 .job-header {
     background: linear-gradient(135deg, var(--background-secondary) 0%, var(--background-accent) 100%);
     padding: var(--spacing-xl);
@@ -365,21 +365,23 @@ section:hover {
     display: flex;
     align-items: center;
     gap: var(--spacing-lg);
+    min-height: 120px;
 }
 
-/* Company logo - positioned prominently */
+/* Company logo - positioned prominently - Mobile Optimized */
 .company-logo {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     object-fit: contain;
     border-radius: var(--border-radius-md);
     background: var(--background-primary);
     padding: var(--spacing-md);
-    box-shadow: 0 6px 20px var(--shadow-light);
+    box-shadow: 0 4px 15px var(--shadow-light);
     border: 1px solid var(--border-color);
     transition: var(--transition-normal);
     flex-shrink: 0;
     position: relative;
+    z-index: 1;
 }
 
 .company-logo:hover {
@@ -557,7 +559,7 @@ section:hover {
     border-bottom: none;
 }
 
-/* Education entries */
+/* Education entries - Mobile Optimized */
 .education-entry {
     margin-bottom: var(--spacing-xl);
     padding: var(--spacing-lg);
@@ -566,6 +568,7 @@ section:hover {
     border-radius: var(--border-radius-md);
     position: relative;
     transition: var(--transition-normal);
+    min-height: 100px;
 }
 
 .education-entry:hover {
@@ -580,25 +583,28 @@ section:hover {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: var(--spacing-sm);
+    max-width: calc(100% - 100px);
 }
 
 .institution {
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: var(--spacing-sm);
+    max-width: calc(100% - 100px);
 }
 
 .education-entry img {
     position: absolute;
     right: var(--spacing-lg);
     top: var(--spacing-lg);
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     object-fit: contain;
     border-radius: var(--border-radius-sm);
     background: var(--background-primary);
     padding: var(--spacing-sm);
     box-shadow: 0 2px 8px var(--shadow-light);
+    z-index: 1;
 }
 
 /* Skills grid - Enhanced Layout */
