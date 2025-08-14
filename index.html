@@ -12,8 +12,8 @@
     <link rel="manifest" href="/manifest.json">
 
     <!-- Theme Color for Mobile Browsers -->
-    <meta name="theme-color" content="#3498db">
-    <meta name="msapplication-TileColor" content="#3498db">
+    <meta name="theme-color" content="#4a5568">
+    <meta name="msapplication-TileColor" content="#4a5568">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="CV Mohamed Rumy">
@@ -39,473 +39,1024 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://mohamedrumy.ch/">
 
-    <!-- Preload critical resources - Mobile Optimized -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://formspree.io">
-    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://formspree.io" crossorigin>
     <link rel="dns-prefetch" href="//formspree.io">
     <link rel="preload" as="image" href="Bilder/Portrait.JPG" fetchpriority="high">
     
     <!-- Mobile-specific optimizations -->
     <meta name="format-detection" content="telephone=no">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <!-- Critical CSS inline for above-the-fold content - Mobile Optimized -->
+    <!-- Critical CSS inline for above-the-fold content -->
     <style>
-        /* Critical CSS for header and above-the-fold content */
-        header{background:linear-gradient(135deg,#4a5568 0%,#2d3748 100%);color:#f7fafc;text-align:center;padding:3rem 2rem;min-height:300px;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden}
-        header h1{color:#f7fafc;font-size:clamp(2rem,5vw,3rem);margin-bottom:1.5rem;font-weight:700;position:relative;z-index:1}
-        header p{color:#f7fafc;font-size:1.125rem;max-width:600px;position:relative;z-index:1}
-        .professional-info{text-align:center;margin-bottom:1.5rem;position:relative;z-index:1}
-        .job-title-header{color:#ff6b35;font-size:1.5rem;font-weight:600;margin-bottom:0.5rem;text-shadow:0 2px 4px rgba(0,0,0,0.3);letter-spacing:0.5px}
-        .company-info{color:#f7fafc;font-size:1.1rem;font-weight:400;opacity:0.9;margin:0;font-style:italic}
-        .social-links{display:flex;gap:1rem;margin-top:1.5rem;justify-content:center;align-items:center}
-        .social-link{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem;background:rgba(255,255,255,0.95);border:1px solid rgba(255,255,255,0.3);border-radius:8px;color:#2d3748;text-decoration:none;transition:0.3s ease;box-shadow:0 2px 10px rgba(0,0,0,0.15)}
-        .social-link:hover{background:rgba(255,255,255,1);border-color:#ff6b35;transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.3)}
-        .social-icon{width:18px;height:18px;fill:#2d3748;flex-shrink:0}
-        .social-text{font-weight:500;font-size:0.85rem;color:#2d3748}
-        .github-link:hover{background:#f6f8fa;border-color:#24292e;color:#24292e}
-        .github-link:hover .social-icon{fill:#24292e}
-        .linkedin-link:hover{background:#f3f6f8;border-color:#0077b5;color:#0077b5}
-        .linkedin-link:hover .social-icon{fill:#0077b5}
-        .responsibilities-list{list-style:disc;padding-left:1.5rem;margin:1rem 0 0 0}
-        .responsibilities-list li{padding:0.5rem 0;color:#374151;line-height:1.6;font-size:0.95rem}
-        .responsibilities-list li:hover{color:#1f2937}
-        .interests-section{padding:1.5rem;background:linear-gradient(135deg,#fff 0%,#f8fafc 100%);border-radius:12px;border:1px solid #e2e8f0;box-shadow:0 4px 20px rgba(45,55,72,0.08);position:relative;overflow:hidden;text-align:center;margin-top:2rem}
-        .interests-section::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ff6b35,#f7931e);border-radius:2px}
-        .interests-section h3{color:#ff6b35;font-size:1.5rem;font-weight:700;margin-bottom:1rem;position:relative;display:inline-block}
-        .interests-section h3::after{content:"";position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:60px;height:2px;background:linear-gradient(90deg,#ff6b35,#f7931e);border-radius:2px}
-        .interests-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1rem;margin-top:1rem}
-        .interest-item{background:#fff;padding:1rem;border-radius:8px;border:1px solid #e2e8f0;transition:0.3s ease;position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.05)}
-        .interest-item::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#ff6b35,#f7931e);transform:scaleX(0);transition:0.3s ease}
-        .interest-item:hover{transform:translateY(-2px);box-shadow:0 4px 15px rgba(0,0,0,0.1);background:#f8fafc}
-        .interest-item:hover::before{transform:scaleX(1)}
-        .interest-text{color:#374151;font-weight:600;font-size:0.9rem;line-height:1.3}
-        .responsibilities-list{list-style:disc;padding-left:1.5rem;margin:1.5rem 0 0 0}
-        .responsibilities-list li{padding:0.5rem 0;color:#374151;line-height:1.6;font-size:0.95rem}
-        .responsibilities-list li:hover{color:#1f2937}
-        .company-logo{width:60px;height:60px;object-fit:contain;border-radius:8px;background:#fff;padding:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);border:1px solid #e2e8f0;flex-shrink:0}
-        header img{width:200px;height:200px;border-radius:50%;object-fit:cover;border:8px solid rgba(255,255,255,0.15);margin-bottom:2rem;box-shadow:0 12px 40px rgba(0,0,0,0.4);transition:0.3s ease;position:relative;z-index:1}
-        main{max-width:1200px;margin:0 auto;padding:2rem}
-        section{margin-bottom:3rem;padding:3rem;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(45,55,72,0.08);transition:0.3s ease;border:1px solid #e2e8f0}
-        h1,h2,h3{font-weight:600;line-height:1.4;margin-bottom:1rem;color:#2d3748}
-        h1{font-size:2rem;margin-bottom:1.5rem;font-weight:700}
-        h2{font-size:1.5rem;margin-bottom:1.5rem;position:relative;padding-bottom:1rem}
-        h2:after{content:"";position:absolute;bottom:0;left:0;width:60px;height:4px;background:linear-gradient(90deg,#ff6b35,#f7931e);border-radius:4px}
-        body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.6;color:#2d3748;background-color:#f7fafc;font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+        /* Reset and base styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background-color: #f7fafc;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Header styles */
+        header {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            color: #f7fafc;
+            text-align: center;
+            padding: 3rem 2rem;
+            min-height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.05) 0%, transparent 50%);
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            color: #f7fafc;
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .professional-info {
+            margin-bottom: 1.5rem;
+        }
+
+        .job-title-header {
+            color: #ff6b35;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .company-info {
+            color: #f7fafc;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* Hero Contact Info */
+        .hero-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .hero-contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #f7fafc;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .hero-contact-item:hover {
+            opacity: 1;
+        }
+
+        .contact-icon-hero {
+            font-size: 1.2rem;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #f7fafc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .social-text {
+            font-size: 0.9rem;
+        }
+
+        /* Main content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(45, 55, 72, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #2d3748;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e);
+            border-radius: 2px;
+        }
+
+        /* Job and Education Entries */
+        .job-entry, .education-entry {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .job-header {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .company-logo {
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .job-info h3, .education-entry h3 {
+            color: #2d3748;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-period, .education-period {
+            color: #ff6b35;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .company-name, .institution {
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .company-location {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+
+        .responsibilities-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .responsibilities-list li {
+            position: relative;
+            padding-left: 0;
+            margin-bottom: 0.75rem;
+            color: #4a5568;
+        }
+
+        /* Contact Form Styles */
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background-color: #f8fafc;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b35;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .required-field {
+            color: #ff6b35;
+            margin-left: 0.25rem;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 0.875rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2rem auto 0;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        /* Skills Container */
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .language-skills-compact, .programming-skills, .interests-section {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .language-skills-compact h3, .programming-skills h3, .interests-section h3 {
+            color: #ff6b35;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
         
-        /* Mobile-specific critical CSS optimizations */
+        .language-grid .skill-level {
+            width: 50px;
+        }
+
+        .skill-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-subcategory {
+            background: #ffffff;
+            padding: 1.25rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .skill-subcategory h4 {
+            color: #4a5568;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #ff6b35;
+            text-align: center;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            gap: 1rem;
+        }
+
+        .skill-name {
+            color: #4a5568;
+            font-weight: 500;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .skill-level {
+            color: #718096;
+            font-size: 0.9rem;
+            background: #f8fafc;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            white-space: nowrap;
+            flex-shrink: 0;
+            width: 90px;
+            text-align: center;
+            display: inline-block;
+        }
+        
+        .language-grid .skill-level {
+            width: 50px;
+        }
+
+        .skill-bar-container {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b35, #f7931e);
+            border-radius: 4px;
+            width: var(--skill-width);
+            transition: width 1s ease;
+        }
+
+        /* Interests Grid */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .interest-item {
+            background: #ffffff;
+            padding: 1.25rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+        }
+
+        .interest-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .interest-text {
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+        /* Social Links Contact */
+        .social-links-contact {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .social-links-contact h4 {
+            color: #4a5568;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-link-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .social-link-contact:hover {
+            background: #ff6b35;
+            border-color: #ff6b35;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+        }
+
+        .social-icon-contact {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Mobile optimizations */
         @media (max-width: 768px) {
-            header { min-height: 250px; padding: 2rem 1rem; }
-            header h1 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+            header { min-height: auto; padding: 2rem 1rem; }
             header img { width: 120px; height: 120px; }
+            header h1 { font-size: 1.75rem; }
+            .job-title-header { font-size: 1.25rem; }
+            .hero-contact { flex-direction: column; align-items: center; gap: 1rem; }
+            .social-links { flex-direction: column; align-items: center; }
             main { padding: 1rem; }
             section { padding: 1.5rem; margin-bottom: 2rem; }
-            .job-title, .company-name { word-wrap: break-word; overflow-wrap: break-word; hyphens: auto; }
-            
-            /* Essential mobile optimizations - REMOVED AGGRESSIVE RULES */
-            .education-entry { min-height: 100px; }
-            .education-entry img { width: 70px; height: 70px; right: 1rem; top: 1rem; }
-            .education-period, .institution { max-width: calc(100% - 100px); }
-            .company-logo { width: 70px; height: 70px; }
-            .job-header { min-height: 120px; }
+            .job-header { flex-direction: column; }
+            .skill-categories { grid-template-columns: 1fr; }
+            .social-links-grid { flex-direction: column; align-items: center; }
+            .submit-button { width: 100%; }
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #4a5568;
+            color: #f7fafc;
+            padding: 8px;
+            text-decoration: none;
+            border-radius: 4px;
+            z-index: 1000;
+        }
+
+        .skip-link:focus {
+            top: 6px;
         }
     </style>
 
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <!-- External stylesheets with proper loading -->
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="mobile-optimizations.css" media="(max-width: 768px)">
-    <noscript><link rel="stylesheet" href="styles.css"></noscript>
-    <noscript><link rel="stylesheet" href="mobile-optimizations.css"></noscript>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+    <!-- Scripts mit EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="scripts.js" defer></script>
 
     <!-- Structured Data -->
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Mohamed Rumy",
-            "jobTitle": "System Engineer Microsoft",
-            "worksFor": {
-                "@type": "Organization",
-                "name": "Bundesamt für Informatik und Telekommunikation BIT"
-            },
-            "description": "System Engineer Microsoft mit Erfahrung in Service Desk und technischer Kundenberatung",
-            "image": "Bilder/Portrait.JPG",
-            "url": "https://mohamedrumy.ch/",
-            "knowsLanguage": ["de", "en", "fr"],
-            "knowsAbout": ["Microsoft", "System Engineering", "Automation", "PowerShell", "Java", "JavaScript"]
-        }
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mohamed Rumy",
+        "jobTitle": "System Engineer Microsoft",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Bundesamt für Informatik und Telekommunikation BIT"
+        },
+        "description": "System Engineer Microsoft mit Erfahrung in Service Desk und technischer Kundenberatung",
+        "image": "https://mohamedrumy.ch/Bilder/Portrait.JPG",
+        "url": "https://mohamedrumy.ch/",
+        "email": "mohamed.rumy@example.com",
+        "telephone": "+41 XX XXX XX XX",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bern",
+            "addressCountry": "CH"
+        },
+        "sameAs": [
+            "https://github.com/MohamedRumy-HFTM",
+            "https://www.linkedin.com/in/mohamed-imad-rumy-3ba4571a4"
+        ]
+    }
     </script>
 </head>
 <body>
-<!-- Skip Navigation for Accessibility -->
-<a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+    <!-- Skip Navigation for Accessibility -->
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
-<header role="banner">
-    <div class="hero-content">
-        <img src="Bilder/Portrait.JPG" alt="Portrait von Mohamed Rumy" width="200" height="200" loading="eager" decoding="sync">
-        <h1>Mohamed Rumy</h1>
-        <div class="professional-info">
-            <h2 class="job-title-header">System Engineer Microsoft</h2>
-            <p class="company-info">Bundesamt für Informatik und Telekommunikation BIT</p>
-        </div>
+    <header role="banner">
+        <div class="hero-content">
+            <img src="Bilder/Portrait.JPG" alt="Portrait von Mohamed Rumy" width="180" height="180" loading="eager">
+            <h1>Mohamed Rumy</h1>
+            <div class="professional-info">
+                <div class="job-title-header">System Engineer Microsoft</div>
+                <p class="company-info">Bundesamt für Informatik und Telekommunikation BIT</p>
+            </div>
 
-        <!-- Social Media Links -->
-        <div class="social-links" aria-label="Soziale Medien und Portfolio">
-            <a href="https://github.com/MohamedRumy-HFTM/CV-MohamedRumy_HFTM.git"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="social-link github-link"
-               aria-label="GitHub Portfolio öffnen">
-                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-                <span class="social-text">GitHub</span>
-            </a>
-
-            <a href="https://www.linkedin.com/in/mohamed-imad-rumy-3ba4571a4"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="social-link linkedin-link"
-               aria-label="LinkedIn Profil öffnen">
-                <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                <span class="social-text">LinkedIn</span>
-            </a>
-        </div>
-    </div>
-</header>
-
-<main id="main-content" role="main">
-    <section id="about" aria-labelledby="about-heading">
-        <h2 id="about-heading">Über mich</h2>
-        <p>Ich bin System Engineer Microsoft beim Bundesamt für Informatik und Telekommunikation und bringe Erfahrung aus dem Service Desk und der technischen Kundenberatung mit. Neben meiner Arbeit bilde ich mich an der HFTM zum diplomierten Informatiker HF mit Schwerpunkt Softwareentwicklung weiter.</p>
-        <p>In meiner aktuellen Rolle arbeite ich an der Automatisierung und Weiterentwicklung von Microsoft-Plattformen. In meiner Freizeit treibe ich gerne Sport und verbringe Zeit mit Familie und Freunden.</p>
-    </section>
-
-    <section id="experience" aria-labelledby="experience-heading">
-        <h2 id="experience-heading">Beruflicher Werdegang</h2>
-
-        <article class="job-entry">
-            <div class="job-header">
-                <img src="Bilder/schweizerische-eidgenossenschaft-schweizerkreuz.jpg" alt="BIT Logo" class="company-logo" loading="lazy" decoding="async">
-                <div class="job-info">
-                    <p class="job-period">Jan 2025 - Heute</p>
-                    <h3 class="job-title">System Engineer Microsoft</h3>
-                    <p class="company">
-                        <span class="company-name">Bundesamt für Informatik und Telekommunikation BIT</span>
-                        <span class="company-location">• Zollikofen, Bern</span>
-                    </p>
+            <!-- Contact Info in Hero Section -->
+            <div class="hero-contact">
+                <a href="mailto:mohamed.rumy@example.com" class="hero-contact-item">
+                    <span class="contact-icon-hero">📧</span>
+                    <span>mohamed.rumy@example.com</span>
+                </a>
+                <div class="hero-contact-item">
+                    <span class="contact-icon-hero">📱</span>
+                    <span>+41 XX XXX XX XX</span>
                 </div>
-            </div>
-            <div class="job-responsibilities">
-                <h4>Verantwortungsbereiche & Leistungen</h4>
-                <ul class="responsibilities-list">
-                    <li>In Projekten im Bereich Engineering, Betrieb und Weiterentwickeln der Microsoft Plattformen (Account Orchestrierung/Workflow Automatisierung)</li>
-                    <li>Scripts, Systemanpassungen und Systemintegration auf den verschiedenen Microsoft Umgebungen erstellen und verwalten</li>
-                    <li>Automatisierungsbestrebungen mit entsprechenden Automatisierungstools vorwärtstreiben</li>
-                    <li>In teamübergreifenden Projekten im Bereich CI/CD (Azure DevOps, GitHub) mitwirken</li>
-                </ul>
-            </div>
-        </article>
-
-        <article class="job-entry">
-            <div class="job-header">
-                <img src="Bilder/schweizerische-eidgenossenschaft-schweizerkreuz.jpg" alt="BIT Logo" class="company-logo" loading="lazy" decoding="async">
-                <div class="job-info">
-                    <p class="job-period">Nov 2023 - Dez 2024</p>
-                    <h3 class="job-title">ICT Service Desk Supporter</h3>
-                    <p class="company">
-                        <span class="company-name">Bundesamt für Informatik und Telekommunikation BIT</span>
-                        <span class="company-location">• Zollikofen, Bern</span>
-                    </p>
-                </div>
-            </div>
-            <div class="job-responsibilities">
-                <h4>Verantwortungsbereiche & Leistungen</h4>
-                <ul class="responsibilities-list">
-                    <li>Störungsmeldungen, Fragen und Änderungswünsche der Kunden entgegennehmen</li>
-                    <li>Notwendige Informationen im Ticketsystem Remedy erfassen und klassifizieren</li>
-                    <li>Störungen am Telefon und per Remote Support beheben, sowie Anwenderunterstützung im Microsoft-Umfeld leisten</li>
-                    <li>Störungstickets an die zuständigen 2nd Level-Stellen weiterleiten</li>
-                    <li>Kunden bei technischen Fragen zum Angebotsportfolio des BIT beraten und unterstützen</li>
-                </ul>
-            </div>
-        </article>
-
-        <article class="job-entry">
-            <div class="job-header">
-                <img src="Bilder/SCMN.SW-38a30a24.png" alt="Swisscom Logo" class="company-logo" loading="lazy" decoding="async">
-                <div class="job-info">
-                    <p class="job-period">Sep 2022 - Okt 2023</p>
-                    <h3 class="job-title">Technical Customer Consultant</h3>
-                    <p class="company">
-                        <span class="company-name">Swisscom Schweiz AG</span>
-                        <span class="company-location">• Ittigen, Bern</span>
-                    </p>
-                </div>
-            </div>
-            <div class="job-responsibilities">
-                <h4>Verantwortungsbereiche & Leistungen</h4>
-                <ul class="responsibilities-list">
-                    <li>Beratung und Analysierung über Telefon und elektronische Supportmedien</li>
-                    <li>Bearbeitung und Beantwortung schriftlicher Kundenanliegen und Tickets</li>
-                    <li>Erstellung und Weiterleitung von Tickets</li>
-                    <li>Unterstützung der Fehleranalyse, Fehlerbehebung und Dokumentation</li>
-                </ul>
-            </div>
-        </article>
-    </section>
-
-    <section id="training" aria-labelledby="training-heading">
-        <h2 id="training-heading">Betriebliche Ausbildungen</h2>
-
-        <article class="education-entry">
-            <p class="education-period"><strong>2015 - 2018</strong></p>
-            <h3>Kaufmännische Grundausbildung EFZ</h3>
-            <p class="institution">Lanz Oensingen AG</p>
-            <img src="Bilder/Logo_Lanz.jpg" alt="Lanz Oensingen AG Logo" loading="lazy" decoding="async">
-        </article>
-    </section>
-
-    <section id="education" aria-labelledby="education-heading">
-        <h2 id="education-heading">Schulischer Werdegang</h2>
-
-        <article class="education-entry">
-            <p class="education-period"><strong>2024 - Zurzeit (Abschluss 2027)</strong></p>
-            <h3>dipl. Informatiker HF - Schwerpunkt Softwareentwicklung</h3>
-            <p class="institution">Höhere Fachschule für Technik Mittelland HFTM</p>
-            <img src="Bilder/HFTM_logo.jpg" alt="HFTM Logo" loading="lazy" decoding="async">
-        </article>
-
-        <article class="education-entry">
-            <p class="education-period"><strong>2015 - 2018</strong></p>
-            <h3>Kaufmännische Grundbildung EFZ</h3>
-            <p class="institution">Kaufmännische Berufsfachschule Solothurn KBS</p>
-            <img src="Bilder/KBS_logo.jpeg" alt="KBS Logo" loading="lazy" decoding="async">
-        </article>
-    </section>
-
-    <section id="skills" aria-labelledby="skills-heading">
-        <h2 id="skills-heading">Kenntnisse und Interessen</h2>
-
-        <div class="skills-grid">
-            <div class="skill-category language-skills">
-                <h3>Sprachkenntnisse</h3>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Englisch - Muttersprache</span>
-                        <span class="skill-level">C2</span>
-                    </div>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar skill-bar-fill" style="--skill-width: 100%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Deutsch + Schweizerdeutsch - Fliessend</span>
-                        <span class="skill-level">C2</span>
-                    </div>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar skill-bar-fill" style="--skill-width: 100%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Französisch - Konversationssicher</span>
-                        <span class="skill-level">B2</span>
-                    </div>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar skill-bar-fill" style="--skill-width: 67%"></div>
-                    </div>
+                <div class="hero-contact-item">
+                    <span class="contact-icon-hero">📍</span>
+                    <span>Bern, Schweiz</span>
                 </div>
             </div>
 
-            <div class="skill-category programming-skills">
-                <h3>Programmiersprachen</h3>
+            <!-- Social Media Links -->
+            <div class="social-links" aria-label="Soziale Medien">
+                <a href="https://github.com/MohamedRumy-HFTM/CV-MohamedRumy_HFTM.git"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="social-link github-link"
+                   aria-label="GitHub öffnen">
+                    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span class="social-text">GitHub</span>
+                </a>
 
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Java</span>
-                    </div>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar skill-bar-fill" style="--skill-width: 33%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">HTML</span>
-                    </div>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar skill-bar-fill" style="--skill-width: 33%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">CSS</span>
-                    </div>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar skill-bar-fill" style="--skill-width: 33%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">JavaScript</span>
-                    </div>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar skill-bar-fill" style="--skill-width: 33%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">SQL</span>
-                    </div>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar skill-bar-fill" style="--skill-width: 17%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">PostgreSQL</span>
-                    </div>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar skill-bar-fill" style="--skill-width: 17%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">PowerShell</span>
-                    </div>
-                    <div class="skill-bar-container">
-                        <div class="skill-bar skill-bar-fill" style="--skill-width: 50%"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="interests-section">
-                <h3>Interessen</h3>
-                <div class="interests-grid">
-                    <div class="interest-item">
-                        <div class="interest-text">Lesen</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-text">Kochen</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-text">Fitness</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-text">Tennis</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-text">Muay Thai</div>
-                    </div>
-                    <div class="interest-item">
-                        <div class="interest-text">Familie & Freunde</div>
-                    </div>
-                </div>
+                <a href="https://www.linkedin.com/in/mohamed-imad-rumy-3ba4571a4"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="social-link linkedin-link"
+                   aria-label="LinkedIn öffnen">
+                    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    <span class="social-text">LinkedIn</span>
+                </a>
             </div>
         </div>
-    </section>
+    </header>
 
-    <section id="contact" aria-labelledby="contact-heading">
-        <h2 id="contact-heading">Kontakt & Netzwerk</h2>
+    <main id="main-content" role="main">
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">Über mich</h2>
+            <p>Ich bin System Engineer Microsoft beim Bundesamt für Informatik und Telekommunikation und bringe Erfahrung aus dem Service Desk und der technischen Kundenberatung mit. Neben meiner Arbeit bilde ich mich an der HFTM zum diplomierten Informatiker HF mit Schwerpunkt Softwareentwicklung weiter.</p>
+            <p>In meiner aktuellen Rolle arbeite ich an der Automatisierung und Weiterentwicklung von Microsoft-Plattformen. In meiner Freizeit treibe ich gerne Sport und verbringe Zeit mit Familie und Freunden.</p>
+        </section>
 
+        <section id="experience" aria-labelledby="experience-heading">
+            <h2 id="experience-heading">Beruflicher Werdegang</h2>
 
+            <article class="job-entry">
+                <div class="job-header">
+                    <img src="Bilder/schweizerische-eidgenossenschaft-schweizerkreuz.jpg" alt="BIT Logo" class="company-logo" loading="lazy" width="70" height="70">
+                    <div class="job-info">
+                        <p class="job-period">Jan 2025 - Heute</p>
+                        <h3 class="job-title">System Engineer Microsoft</h3>
+                        <p class="company">
+                            <span class="company-name">Bundesamt für Informatik und Telekommunikation BIT</span>
+                            <span class="company-location">• Zollikofen, Bern</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="job-responsibilities">
+                    <h4>Verantwortungsbereiche & Leistungen</h4>
+                    <ul class="responsibilities-list">
+                        <li>In Projekten im Bereich Engineering, Betrieb und Weiterentwickeln der Microsoft Plattformen (Account Orchestrierung/Workflow Automatisierung)</li>
+                        <li>Scripts, Systemanpassungen und Systemintegration auf den verschiedenen Microsoft Umgebungen erstellen und verwalten</li>
+                        <li>Automatisierungsbestrebungen mit entsprechenden Automatisierungstools vorwärtstreiben</li>
+                        <li>In teamübergreifenden Projekten im Bereich CI/CD (Azure DevOps, GitHub) mitwirken</li>
+                    </ul>
+                </div>
+            </article>
 
-        <h3 id="contact-form-heading">Kontaktformular</h3>
-        <form method="POST" action="https://formspree.io/f/mjkojvwl" accept-charset="UTF-8" id="contact-form" novalidate>
-            <div class="form-group">
-                <label for="name" id="name-label">Name: <span class="required" aria-label="Pflichtfeld">*</span></label>
-                <input
-                        autocomplete="name"
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        aria-required="true"
-                        aria-labelledby="name-label"
-                        aria-describedby="name-error"
-                        minlength="2"
-                        maxlength="100">
-                <div id="name-error" class="error-message" role="alert" aria-live="polite"></div>
+            <article class="job-entry">
+                <div class="job-header">
+                    <img src="Bilder/schweizerische-eidgenossenschaft-schweizerkreuz.jpg" alt="BIT Logo" class="company-logo" loading="lazy" width="70" height="70">
+                    <div class="job-info">
+                        <p class="job-period">Nov 2023 - Dez 2024</p>
+                        <h3 class="job-title">ICT Service Desk Supporter</h3>
+                        <p class="company">
+                            <span class="company-name">Bundesamt für Informatik und Telekommunikation BIT</span>
+                            <span class="company-location">• Zollikofen, Bern</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="job-responsibilities">
+                    <h4>Verantwortungsbereiche & Leistungen</h4>
+                    <ul class="responsibilities-list">
+                        <li>Störungsmeldungen, Fragen und Änderungswünsche der Kunden entgegennehmen</li>
+                        <li>Notwendige Informationen im Ticketsystem Remedy erfassen und klassifizieren</li>
+                        <li>Störungen am Telefon und per Remote Support beheben, sowie Anwenderunterstützung im Microsoft-Umfeld leisten</li>
+                        <li>Störungstickets an die zuständigen 2nd Level-Stellen weiterleiten</li>
+                        <li>Kunden bei technischen Fragen zum Angebotsportfolio des BIT beraten und unterstützen</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="job-entry">
+                <div class="job-header">
+                    <img src="Bilder/SCMN.SW-38a30a24.png" alt="Swisscom Logo" class="company-logo" loading="lazy" width="70" height="70">
+                    <div class="job-info">
+                        <p class="job-period">Sep 2022 - Okt 2023</p>
+                        <h3 class="job-title">Technical Customer Consultant</h3>
+                        <p class="company">
+                            <span class="company-name">Swisscom Schweiz AG</span>
+                            <span class="company-location">• Ittigen, Bern</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="job-responsibilities">
+                    <h4>Verantwortungsbereiche & Leistungen</h4>
+                    <ul class="responsibilities-list">
+                        <li>Beratung und Analysierung über Telefon und elektronische Supportmedien</li>
+                        <li>Bearbeitung und Beantwortung schriftlicher Kundenanliegen und Tickets</li>
+                        <li>Erstellung und Weiterleitung von Tickets</li>
+                        <li>Unterstützung der Fehleranalyse, Fehlerbehebung und Dokumentation</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+
+        <section id="training" aria-labelledby="training-heading">
+            <h2 id="training-heading">Betriebliche Ausbildungen</h2>
+
+            <article class="education-entry">
+                <p class="education-period"><strong>2015 - 2018</strong></p>
+                <h3>Kaufmännische Grundausbildung EFZ</h3>
+                <p class="institution">Lanz Oensingen AG</p>
+                <img src="Bilder/Logo_Lanz.jpg" alt="Lanz Oensingen AG Logo" loading="lazy" width="70" height="70">
+            </article>
+        </section>
+
+        <section id="education" aria-labelledby="education-heading">
+            <h2 id="education-heading">Schulischer Werdegang</h2>
+
+            <article class="education-entry">
+                <p class="education-period"><strong>2024 - Zurzeit (Abschluss 2027)</strong></p>
+                <h3>dipl. Informatiker HF - Schwerpunkt Softwareentwicklung</h3>
+                <p class="institution">Höhere Fachschule für Technik Mittelland HFTM</p>
+                <img src="Bilder/HFTM_logo.jpg" alt="HFTM Logo" loading="lazy" width="70" height="70">
+            </article>
+
+            <article class="education-entry">
+                <p class="education-period"><strong>2015 - 2018</strong></p>
+                <h3>Kaufmännische Grundbildung EFZ</h3>
+                <p class="institution">Kaufmännische Berufsfachschule Solothurn KBS</p>
+                <img src="Bilder/KBS_logo.jpeg" alt="KBS Logo" loading="lazy" width="70" height="70">
+            </article>
+        </section>
+
+        <section id="skills" aria-labelledby="skills-heading">
+            <h2 id="skills-heading">Kenntnisse und Interessen</h2>
+
+            <div class="skills-container">
+                <!-- Sprachkenntnisse - kompakter -->
+                <div class="language-skills-compact">
+                    <h3>Sprachkenntnisse</h3>
+                    <div class="language-grid">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Englisch - Muttersprache</span>
+                                <span class="skill-level">C2</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="--skill-width: 100%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Deutsch + Schweizerdeutsch</span>
+                                <span class="skill-level">C2</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="--skill-width: 100%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Französisch</span>
+                                <span class="skill-level">B2</span>
+                            </div>
+                            <div class="skill-bar-container">
+                                <div class="skill-bar-fill" style="--skill-width: 67%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Programmiersprachen - kategorisiert -->
+                <div class="programming-skills">
+                    <h3>Programmiersprachen</h3>
+                    
+                    <div class="skill-categories">
+                        <!-- Object-Oriented Programming -->
+                        <div class="skill-subcategory">
+                            <h4>Object-Oriented Programming</h4>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Java</span>
+                                    <span class="skill-level">Basics</span>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar-fill" style="--skill-width: 33%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Python</span>
+                                    <span class="skill-level">Anfänger</span>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar-fill" style="--skill-width: 17%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">C++</span>
+                                    <span class="skill-level">Anfänger</span>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar-fill" style="--skill-width: 17%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Web Development -->
+                        <div class="skill-subcategory">
+                            <h4>Web Development</h4>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">HTML</span>
+                                    <span class="skill-level">Basics</span>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar-fill" style="--skill-width: 33%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">CSS</span>
+                                    <span class="skill-level">Basics</span>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar-fill" style="--skill-width: 33%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">JavaScript</span>
+                                    <span class="skill-level">Basics</span>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar-fill" style="--skill-width: 33%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Databases -->
+                        <div class="skill-subcategory">
+                            <h4>Databases</h4>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">SQL</span>
+                                    <span class="skill-level">Anfänger</span>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar-fill" style="--skill-width: 17%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">PostgreSQL</span>
+                                    <span class="skill-level">Anfänger</span>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar-fill" style="--skill-width: 17%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">MongoDB</span>
+                                    <span class="skill-level">Anfänger</span>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar-fill" style="--skill-width: 17%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scripting -->
+                        <div class="skill-subcategory">
+                            <h4>Scripting & Automation</h4>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">PowerShell</span>
+                                    <span class="skill-level">Advanced</span>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar-fill" style="--skill-width: 50%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Docker</span>
+                                    <span class="skill-level">Anfänger</span>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar-fill" style="--skill-width: 17%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-header">
+                                    <span class="skill-name">Kubernetes</span>
+                                    <span class="skill-level">Anfänger</span>
+                                </div>
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar-fill" style="--skill-width: 17%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interessen -->
+                <div class="interests-section">
+                    <h3>Interessen</h3>
+                    <div class="interests-grid">
+                        <div class="interest-item">
+                            <div class="interest-text">📚 Lesen</div>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-text">🍳 Kochen</div>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-text">💪 Fitness</div>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-text">🎾 Tennis</div>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-text">🥊 Muay Thai</div>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-text">👨‍👩‍👧‍👦 Familie & Freunde</div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="form-group">
-                <label for="email" id="email-label">E-Mail: <span class="required" aria-label="Pflichtfeld">*</span></label>
-                <input
-                        autocomplete="email"
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        aria-required="true"
-                        aria-labelledby="email-label"
-                        aria-describedby="email-error">
-                <div id="email-error" class="error-message" role="alert" aria-live="polite"></div>
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Kontakt</h2>
+
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <form action="https://formspree.io/f/mjkojvwl" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">
+                            Name
+                            <span class="required-field">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            required 
+                            placeholder="Ihr Name"
+                            aria-required="true"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">
+                            E-Mail
+                            <span class="required-field">*</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="ihre.email@beispiel.com"
+                            aria-required="true"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">
+                            Betreff
+                            <span class="required-field">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="subject" 
+                            name="subject" 
+                            required 
+                            placeholder="Betreff Ihrer Nachricht"
+                            aria-required="true"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">
+                            Nachricht
+                            <span class="required-field">*</span>
+                        </label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            required 
+                            placeholder="Ihre Nachricht..."
+                            aria-required="true"
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">
+                        Nachricht senden
+                    </button>
+                </form>
             </div>
+        </section>
+    </main>
 
-            <div class="form-group">
-                <label for="subject" id="subject-label">Betreff: <span class="required" aria-label="Pflichtfeld">*</span></label>
-                <input
-                        autocomplete="off"
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        required
-                        aria-required="true"
-                        aria-labelledby="subject-label"
-                        aria-describedby="subject-error"
-                        minlength="3"
-                        maxlength="200">
-                <div id="subject-error" class="error-message" role="alert" aria-live="polite"></div>
-            </div>
-
-            <div class="form-group">
-                <label for="message" id="message-label">Nachricht: <span class="required" aria-label="Pflichtfeld">*</span></label>
-                <textarea
-                        autocomplete="off"
-                        id="message"
-                        name="message"
-                        rows="5"
-                        required
-                        aria-required="true"
-                        aria-labelledby="message-label"
-                        aria-describedby="message-error"
-                        minlength="10"
-                        maxlength="2000"></textarea>
-                <div id="message-error" class="error-message" role="alert" aria-live="polite"></div>
-            </div>
-
-            <button type="submit" id="submit-btn" aria-describedby="submit-status">
-                <span class="button-text">Nachricht senden</span>
-                <span class="loading-spinner" aria-hidden="true"></span>
-            </button>
-            <div id="submit-status" class="submit-status" role="status" aria-live="polite"></div>
-        </form>
-    </section>
-</main>
-
-<footer role="contentinfo">
-    <div class="footer-content">
-        <p>&copy; 2025 Mohamed Rumy. Alle Rechte vorbehalten.</p>
-    </div>
-</footer>
+    <footer style="background: #2d3748; color: #f7fafc; text-align: center; padding: 2rem 1rem; margin-top: 3rem;">
+        <p style="margin: 0; font-size: 0.9rem; opacity: 0.9; text-align: center;">
+            © 2025 Mohamed Rumy. Alle Rechte vorbehalten.
+        </p>
+    </footer>
 </body>
 </html>
