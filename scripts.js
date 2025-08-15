@@ -172,22 +172,48 @@ class ContactForm {
         return isValid;
     }
 
-    handleSubmit(e) {
-        // Only validate, Formspree handles the actual submission
+    async handleSubmit(e) {
+        e.preventDefault(); // Verhindert das normale Formular-Senden
+        
+        // Validate form first
         if (!this.validateForm()) {
-            e.preventDefault();
             this.showStatus('Bitte korrigieren Sie die Fehler im Formular.', 'error');
             return false;
         }
 
-        // Let Formspree handle the submission
+        // Set submitting state
         this.isSubmitting = true;
         this.setSubmittingState(true);
         
-        // Show success message after a delay (since Formspree redirects)
-        setTimeout(() => {
-            this.showStatus('Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.', 'success');
-        }, 100);
+        // Get form data
+        const formData = new FormData(this.form);
+        
+        try {
+            // Send via AJAX to Formspree
+            const response = await fetch('https://formspree.io/f/mjkojvwl', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // Success - show message and reset form
+                this.showStatus('Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.', 'success');
+                this.form.reset();
+            } else {
+                throw new Error('Sendefehler');
+            }
+        } catch (error) {
+            // Error handling
+            this.showStatus('Es gab einen Fehler beim Senden. Bitte versuchen Sie es später erneut.', 'error');
+            console.error('Form submission error:', error);
+        } finally {
+            // Reset submitting state
+            this.isSubmitting = false;
+            this.setSubmittingState(false);
+        }
     }
 
     setSubmittingState(isSubmitting) {
