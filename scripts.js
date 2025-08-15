@@ -1,18 +1,16 @@
-// Modern ES6+ JavaScript for CV Website
+// Modern ES6+ JavaScript for CV Website - Formspree Version
 class ContactForm {
     constructor() {
-        this.form = document.getElementById('contact-form');
-        this.submitButton = document.getElementById('submit-btn');
-        this.submitStatus = document.getElementById('submit-status');
+        this.form = document.querySelector('.contact-form');
+        this.submitButton = document.querySelector('.submit-button');
         this.isSubmitting = false;
 
-        this.init();
+        if (this.form) {
+            this.init();
+        }
     }
 
     init() {
-        // Initialize EmailJS
-        emailjs.init("NptaAAi7rHTV3_kLK");
-
         // Add event listeners
         this.addEventListeners();
 
@@ -23,7 +21,7 @@ class ContactForm {
     }
 
     addEventListeners() {
-        // Form submission
+        // Form submission enhancement
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
 
         // Input focus effects
@@ -49,17 +47,19 @@ class ContactForm {
     }
 
     addButtonEffects() {
-        this.submitButton.addEventListener('mouseenter', () => {
-            if (!this.isSubmitting) {
-                this.submitButton.style.transform = 'translateY(-2px)';
-            }
-        });
+        if (this.submitButton) {
+            this.submitButton.addEventListener('mouseenter', () => {
+                if (!this.isSubmitting) {
+                    this.submitButton.style.transform = 'translateY(-2px)';
+                }
+            });
 
-        this.submitButton.addEventListener('mouseleave', () => {
-            if (!this.isSubmitting) {
-                this.submitButton.style.transform = 'translateY(0)';
-            }
-        });
+            this.submitButton.addEventListener('mouseleave', () => {
+                if (!this.isSubmitting) {
+                    this.submitButton.style.transform = 'translateY(0)';
+                }
+            });
+        }
     }
 
     addRealTimeValidation() {
@@ -76,9 +76,8 @@ class ContactForm {
     }
 
     validateField(field) {
-        const fieldId = field.id;
+        const fieldName = field.name;
         const value = field.value.trim();
-        const errorElement = document.getElementById(`${fieldId}-error`);
 
         let isValid = true;
         let errorMessage = '';
@@ -87,7 +86,7 @@ class ContactForm {
         this.clearFieldError(field);
 
         // Field-specific validation
-        switch (fieldId) {
+        switch (fieldName) {
             case 'name':
                 if (value.length < 2) {
                     isValid = false;
@@ -136,29 +135,35 @@ class ContactForm {
     }
 
     showFieldError(field, message) {
-        const errorElement = document.getElementById(`${field.id}-error`);
-        if (errorElement) {
-            errorElement.textContent = message;
+        // Create error element if it doesn't exist
+        let errorElement = field.parentElement.querySelector('.field-error');
+        if (!errorElement) {
+            errorElement = document.createElement('span');
+            errorElement.className = 'field-error';
+            errorElement.style.color = '#ff6b35';
+            errorElement.style.fontSize = '0.85rem';
+            errorElement.style.marginTop = '0.25rem';
             errorElement.style.display = 'block';
-            field.classList.add('error');
+            field.parentElement.appendChild(errorElement);
         }
+        
+        errorElement.textContent = message;
+        field.classList.add('error');
     }
 
     clearFieldError(field) {
-        const errorElement = document.getElementById(`${field.id}-error`);
+        const errorElement = field.parentElement.querySelector('.field-error');
         if (errorElement) {
             errorElement.textContent = '';
-            errorElement.style.display = 'none';
-            field.classList.remove('error');
         }
+        field.classList.remove('error');
     }
 
     validateForm() {
-        const fields = ['name', 'email', 'subject', 'message'];
+        const fields = this.form.querySelectorAll('input, textarea');
         let isValid = true;
 
-        fields.forEach(fieldId => {
-            const field = document.getElementById(fieldId);
+        fields.forEach(field => {
             if (!this.validateField(field)) {
                 isValid = false;
             }
@@ -167,89 +172,62 @@ class ContactForm {
         return isValid;
     }
 
-    async handleSubmit(e) {
-        e.preventDefault();
-
-        if (this.isSubmitting) {
-            return;
-        }
-
-        // Validate form
+    handleSubmit(e) {
+        // Only validate, Formspree handles the actual submission
         if (!this.validateForm()) {
+            e.preventDefault();
             this.showStatus('Bitte korrigieren Sie die Fehler im Formular.', 'error');
-            return;
+            return false;
         }
 
-        // Start submission
+        // Let Formspree handle the submission
         this.isSubmitting = true;
         this.setSubmittingState(true);
-
-        try {
-            await this.sendEmail();
-        } catch (error) {
-            console.error('Email sending failed:', error);
-            this.showStatus('Entschuldigung, es gab einen Fehler beim Senden. Bitte versuchen Sie es später erneut.', 'error');
-        } finally {
-            this.isSubmitting = false;
-            this.setSubmittingState(false);
-        }
+        
+        // Show success message after a delay (since Formspree redirects)
+        setTimeout(() => {
+            this.showStatus('Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.', 'success');
+        }, 100);
     }
 
     setSubmittingState(isSubmitting) {
-        if (isSubmitting) {
-            this.submitButton.disabled = true;
-            this.submitButton.querySelector('.button-text').textContent = 'Wird gesendet...';
-            this.submitButton.querySelector('.loading-spinner').style.display = 'inline-block';
-        } else {
-            this.submitButton.disabled = false;
-            this.submitButton.querySelector('.button-text').textContent = 'Nachricht senden';
-            this.submitButton.querySelector('.loading-spinner').style.display = 'none';
-        }
-    }
-
-    async sendEmail() {
-        const formData = {
-            from_name: document.getElementById('name').value.trim(),
-            from_email: document.getElementById('email').value.trim(),
-            message: `${document.getElementById('subject').value.trim()}\n\n${document.getElementById('message').value.trim()}`
-        };
-
-        try {
-            const response = await emailjs.send('service_2ro0mw5', 'template_do7y9wr', formData);
-            console.log('Email sent successfully:', response);
-            this.showStatus('Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.', 'success');
-            this.resetForm();
-        } catch (error) {
-            console.error('Email sending error:', error);
-            throw new Error('Failed to send email');
+        if (this.submitButton) {
+            if (isSubmitting) {
+                this.submitButton.disabled = true;
+                this.submitButton.textContent = 'Wird gesendet...';
+            } else {
+                this.submitButton.disabled = false;
+                this.submitButton.textContent = 'Nachricht senden';
+            }
         }
     }
 
     showStatus(message, type) {
-        this.submitStatus.textContent = message;
-        this.submitStatus.className = `submit-status ${type}`;
-        this.submitStatus.style.display = 'block';
-
-        // Auto-hide success messages
-        if (type === 'success') {
-            setTimeout(() => {
-                this.submitStatus.style.display = 'none';
-            }, 5000);
+        // Create status element if it doesn't exist
+        let statusElement = document.querySelector('.submit-status');
+        if (!statusElement) {
+            statusElement = document.createElement('div');
+            statusElement.className = 'submit-status';
+            statusElement.style.marginTop = '1rem';
+            statusElement.style.padding = '0.75rem';
+            statusElement.style.borderRadius = '8px';
+            statusElement.style.textAlign = 'center';
+            this.form.appendChild(statusElement);
         }
-    }
 
-    resetForm() {
-        this.form.reset();
-
-        // Clear all error states
-        const inputs = this.form.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            this.clearFieldError(input);
-            input.classList.remove('focused');
-        });
-
-        // Clear status
-        this.submitStatus.style.display = 'none';
+        statusElement.textContent = message;
+        statusElement.style.display = 'block';
+        
+        if (type === 'success') {
+            statusElement.style.backgroundColor = '#48bb78';
+            statusElement.style.color = 'white';
+            setTimeout(() => {
+                statusElement.style.display = 'none';
+            }, 5000);
+        } else {
+            statusElement.style.backgroundColor = '#ff6b35';
+            statusElement.style.color = 'white';
+        }
     }
 }
 
@@ -275,21 +253,23 @@ class PerformanceMonitor {
         window.addEventListener('load', () => {
             if ('performance' in window) {
                 const perfData = performance.getEntriesByType('navigation')[0];
-                this.metrics.pageLoadTime = perfData.loadEventEnd - perfData.loadEventStart;
-                this.metrics.domContentLoaded = perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart;
+                if (perfData) {
+                    this.metrics.pageLoadTime = perfData.loadEventEnd - perfData.loadEventStart;
+                    this.metrics.domContentLoaded = perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart;
 
-                // Mobile-specific logging
-                if (this.isMobile) {
-                    console.log('Mobile Performance metrics:', this.metrics);
-                } else {
-                    console.log('Desktop Performance metrics:', this.metrics);
+                    // Mobile-specific logging
+                    if (this.isMobile) {
+                        console.log('Mobile Performance metrics:', this.metrics);
+                    } else {
+                        console.log('Desktop Performance metrics:', this.metrics);
+                    }
                 }
             }
         });
     }
 
     measureFormPerformance() {
-        const form = document.getElementById('contact-form');
+        const form = document.querySelector('.contact-form');
         if (form && !this.isMobile) {
             const observer = new PerformanceObserver((list) => {
                 for (const entry of list.getEntries()) {
@@ -299,7 +279,11 @@ class PerformanceMonitor {
                 }
             });
 
-            observer.observe({ entryTypes: ['measure'] });
+            try {
+                observer.observe({ entryTypes: ['measure'] });
+            } catch (error) {
+                console.log('PerformanceObserver not supported:', error);
+            }
         }
     }
 }
@@ -318,7 +302,7 @@ class AccessibilityEnhancer {
 
     addKeyboardNavigation() {
         // Add keyboard navigation for form
-        const form = document.getElementById('contact-form');
+        const form = document.querySelector('.contact-form');
         if (form) {
             form.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
@@ -333,7 +317,10 @@ class AccessibilityEnhancer {
     }
 
     getNextField(currentField) {
-        const fields = Array.from(this.form.querySelectorAll('input, textarea'));
+        const form = document.querySelector('.contact-form');
+        if (!form) return null;
+        
+        const fields = Array.from(form.querySelectorAll('input, textarea, button'));
         const currentIndex = fields.indexOf(currentField);
         return fields[currentIndex + 1] || null;
     }
@@ -373,7 +360,8 @@ class SmoothScroller {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 e.preventDefault();
-                const target = document.querySelector(anchor.getAttribute('href'));
+                const targetId = anchor.getAttribute('href');
+                const target = document.querySelector(targetId);
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
@@ -396,36 +384,48 @@ class SkillBarsAnimator {
     }
 
     observeSkillBars() {
-        const skillBars = document.querySelectorAll('.skill-bar');
+        const skillBars = document.querySelectorAll('.skill-bar-fill');
 
         if ('IntersectionObserver' in window) {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Mobile optimization: simpler animation
-                        if (window.innerWidth <= 768) {
-                            entry.target.style.width = entry.target.style.getPropertyValue('--skill-width');
-                        } else {
-                            // Desktop: full animation
-                            entry.target.style.width = entry.target.style.getPropertyValue('--skill-width');
-                        }
+                        // Trigger animation by adding a class
+                        entry.target.style.animation = 'fillBar 1s ease-out forwards';
                         observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.3, // Lower threshold for mobile
-                rootMargin: '0px 0px -30px 0px' // Smaller margin for mobile
+                threshold: 0.3,
+                rootMargin: '0px 0px -30px 0px'
             });
 
             skillBars.forEach(bar => {
+                // Initially set width to 0
+                const targetWidth = bar.style.getPropertyValue('--skill-width') || bar.style.width;
+                bar.setAttribute('data-width', targetWidth);
+                bar.style.width = '0';
                 observer.observe(bar);
             });
+
+            // Add animation keyframes if not exists
+            if (!document.querySelector('#skill-bar-animation')) {
+                const style = document.createElement('style');
+                style.id = 'skill-bar-animation';
+                style.textContent = `
+                    @keyframes fillBar {
+                        from { width: 0; }
+                        to { width: var(--skill-width); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
         } else {
             // Fallback for older browsers
             skillBars.forEach(bar => {
                 setTimeout(() => {
                     bar.style.width = bar.style.getPropertyValue('--skill-width');
-                }, 300); // Faster on mobile
+                }, 300);
             });
         }
     }
